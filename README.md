@@ -46,7 +46,7 @@ https://drive.google.com/drive/folders/16Of9Wfffb50az0U87iHjmFLgzjbs5HTR
 
    將籌碼面及技術面資料合併，用以下欄位作為Key合併 : ['證券代碼', '簡稱', '年月日']
    
-   Y為預測標的，將T+7日報酬>0的樣本標記為1
+   Y為預測標的，將T+5日報酬>0的樣本標記為1
 
 ## 回測XGBOOST 模型
 
@@ -55,8 +55,27 @@ https://drive.google.com/drive/folders/16Of9Wfffb50az0U87iHjmFLgzjbs5HTR
 
 ## 迴圈做股價預測
 
-   以Expanding Window的方式預測，
-   ![image](https://github.com/xavior107352022/XGboost-ETF-/blob/master/cummulativ_return.jpg)
+   以Expanding Window的方式預測，用過去所有可取得資料預測T+5報酬漲跌，
+   
+   XGBOOST模型參數只更改n_estimators=200，輸出soft_max值，概念類似標的上漲之機率，再以此值作為權重加權。
+   
+   
+   以下為期間準確率，約為0.53仍有進步空間
+   
    ![image](https://github.com/xavior107352022/XGboost-ETF-/blob/master/period_accuracy.jpg)
+   
+   觀察每一期準確率，如下圖，我們可以發現，以黃色標示之日期為市場較為動盪的期間，
+   
+   模型準確率就會顯著降低，導致績效下降。
+   
    ![image](https://github.com/xavior107352022/XGboost-ETF-/blob/master/statistic.jpg)
-             
+       
+## ETF交易競賽期間損益
+
+   競賽期間主觀交易累積報酬顯著高於大盤，而機器學習模型(XGBOOST)績效較差，可以觀察到模型在市場劇烈動盪時無法及時反應。
+
+   ![image](https://github.com/xavior107352022/XGboost-ETF-/blob/master/cummulativ_return.jpg)
+   
+## 結論及檢討
+
+   未來加入VIX、美元、黃金等資產衡量投資人恐慌狀態，或許能夠捕捉到市場動盪的狀態。
