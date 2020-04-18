@@ -1,5 +1,9 @@
 # XGboost-ETF
 
+利用機器學習模型做資產預測，運用於ETF交易競賽。
+競賽周期為2019/03/25~2019/06/03，投資標的為台灣上市所有ETF。
+
+
 ## Data Source : TEJ
 https://drive.google.com/drive/folders/16Of9Wfffb50az0U87iHjmFLgzjbs5HTR
 
@@ -52,4 +56,7 @@ https://drive.google.com/drive/folders/16Of9Wfffb50az0U87iHjmFLgzjbs5HTR
 ## 迴圈做股價預測
 
    以Expanding Window的方式預測，
+   ![image](https://github.com/xavior107352022/XGboost-ETF-/blob/master/cummulativ_return.jpg)
+   ![image](https://github.com/xavior107352022/XGboost-ETF-/blob/master/period_accuracy.jpg)
+   ![image](https://github.com/xavior107352022/XGboost-ETF-/blob/master/statistic.jpg)
              
